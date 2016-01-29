@@ -1,0 +1,24 @@
+{
+  "name": "something",
+  "version": "1.0.0",
+  "description": "something",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pandolphin/something.git"
+  },
+  "author": "zicheng.lj",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "~2.9.6",
+    "gulp": "~3.9.0",
+    "gulp-concat": "~2.6.0",
+    "gulp-jshint": "~1.11.2",
+    "gulp-rename": "~1.2.2",
+    "gulp-sass": "~2.0.4",
+    "gulp-uglify": "~1.4.1"
+  }
+}
