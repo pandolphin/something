@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  
+  <div id="download">Loading...</div>
+  <script>
+    //1. 生成一个一千行,一百列的数据集
+    //2. 构造excel
+    //3. 生成一个下载链接
+  var data, string ;
+  data = createData(data);
+  string = exportCsv(data);
+  createLink(string);
+  function createData(data) {
+    var row = [];
+    var rownum = 10, colnum = 10;
+    data = [];
+    for(var k = 0; k < colnum; k ++) {
+      row.push(unescape("%u"+(Math.round(Math.random() * 20901) + 19968).toString(16)));
+    }
+    data.push(row);
+    for(var i = 1; i < rownum; i++) {
+      row = [];
+      for(var j = 0; j < colnum; j++) {
+          row.push(Math.random().toFixed(3));
+      }
+      data.push(row);
+    }
+    return data;
+  }
+  function exportCsv(data) {
+    var string = '\uFEFF';
+    var colDelim = ',',
+        rowDelim = '\n';
+    for(var i = 0; i < data.length; i ++) {
+      string += data[i].join(colDelim).slice(0, -1) + rowDelim;
+    }
+    console.log(string);
+    return string;
+  }
+  function createLink(string) {
+    var uri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(string);
+    var downloadLink = document.createElement("a");
+    downloadLink.href = uri;
+    downloadLink.download = "export.csv";
+    downloadLink.textContent = "export.csv";
+    document.getElementById("download").appendChild(downloadLink);
+  }
+  </script>
+</body>
+</html>
+
